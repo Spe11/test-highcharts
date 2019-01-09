@@ -77,7 +77,8 @@ class Form extends Model
                 $index++;
             }
             if (is_numeric($rowData[0])) {
-                $this->data[$rowData[0]] = $rowData[count($rowData) - 1];
+                $value =  str_replace(' ', '', $rowData[count($rowData) - 1]);
+                $this->data[$rowData[0]] = $value;
             }
         }
     }
