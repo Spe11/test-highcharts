@@ -23,6 +23,9 @@ use yii\helpers\Html;
             ],
             'series' => [
                 ['name' => 'Баланс', 'data' => array_values($data)],
+            ],
+            'tooltip' => [
+                'valueDecimals' => 2
             ]
         ]
         ]); ?>
