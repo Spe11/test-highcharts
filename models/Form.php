@@ -24,7 +24,7 @@ class Form extends Model
     public function rules()
     {
         return [
-            [['file'], 'file', 'skipOnEmpty' => false, 'extensions' => 'html'],
+            [['file'], 'file', 'skipOnEmpty' => false, 'extensions' => 'htm, html'],
         ];
     }
 
@@ -40,7 +40,11 @@ class Form extends Model
         $this->file = $file;
         if ($this->validate()) {
             $this->parse($this->file);
-            $this->calculate();
+            if(is_null($this->data)) {
+                return false;
+            } else {
+                $this->calculate();
+            }
             return true;
         } else {
             return false;
@@ -66,7 +70,7 @@ class Form extends Model
     {
         $html = file_get_contents($this->file->tempName);
         $DOM = new \DOMDocument();
-        $DOM->loadHTML($html);
+        @$DOM->loadHTML($html);
         $rows = $DOM->getElementsByTagName('tr');
         foreach ($rows as $row) {
             $index = 0;

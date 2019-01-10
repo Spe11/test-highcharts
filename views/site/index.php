@@ -7,7 +7,7 @@ use yii\helpers\Html;
     <div class="body-content">
     <div class="form">
         <?= Html::beginForm('/', 'post', ['enctype' => 'multipart/form-data']) ?>
-        <?= Html::activeFileInput($form, 'file', ['id' => 'file', 'accept' => '.html']) ?>
+        <?= Html::activeFileInput($form, 'file', ['id' => 'file', 'accept' => '.html, .htm']) ?>
         <div class="button">
         <?= Html::submitButton('Построить график', ['id' => 'button','class' => 'btn-primary']); ?>
         </div>

@@ -34,7 +34,7 @@ class SiteController extends Controller
             if($form->upload(UploadedFile::getInstance($form, 'file'))) {
                 return $this->render('result', ['data' => $form->getData()]);
             } else {
-                Yii::$app->session->setFlash('error', 'Выберите html файл');
+                Yii::$app->session->setFlash('error', 'Выберите корректный html или htm файл');
             }
         }
         return $this->render('index', ['form' => $form]);
